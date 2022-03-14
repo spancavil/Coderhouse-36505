@@ -1,0 +1,14 @@
+Instalación básica Linux:
+
+sudo apt install nodejs
+sudo apt install npm
+
+para actualizar NPM:
+npm install -g npm
+
+Dato de color
+-------------
+
+Upgrade npm y node en Linux:
+Se recomienda usar NVM (node version manager)... chequear la docu https://github.com/nvm-sh/nvm. Ahí figura un paso a 
+paso de cómo instalar y cómo usar.

@@ -1,0 +1,12 @@
+1- Creamos el repo remoto desde el dashboard de Github
+2- Linkeamos el repo con nuestro proyecto:
+git remote add origin <link>
+3- Hacemos un primer en nuestra app:
+git add .
+git commit -m "first commit"
+4- Renombramos la rama master a main:
+git branch -M main
+5- Pusheamos los cambios a nuestro repo remoto
+git push origin main
+
+Deberíamos ver en el github los cambios hechos.
