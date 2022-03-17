@@ -1,0 +1,7 @@
+OPCIONALMENTE podemos instalar bootstrap (que es una librería de CSS)
+
+npm i bootstrap
+
+Luego agregar los módulos en index.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';

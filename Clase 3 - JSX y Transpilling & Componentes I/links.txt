@@ -1,0 +1,13 @@
+1era parte
+Mostrar ejemplo real de applicación en HTML y CSS puro. Notar lo difícil que sería mantenerla.
+www.mercadolibre.com.ar.
+https://babeljs.io => Ejemplo de cómo sería el traspilado de JSX a lenguaje de React.
+
+2da parte
+Ver cómo limpiar la app.
+https://colorhunt.co/ => Para buscar paleta de colores
+https://marketplace.visualstudio.com/items?itemName=Tyriar.lorem-ipsum => Añade extensión lorem ipsum
+https://fonts.google.com => Añadimos fuentes a nuestro proyecto a través de link o a través de la importación del archivo.
+
+https://www.w3schools.com/howto/howto_js_topnav_responsive.asp=> dan un template para crear una navbar. En href poner "/#" de momento.
+https://fontawesome.com/icons => íconos para el widget del carrito

@@ -1,0 +1,1 @@
+//Ver ejemplo if normal y comparar con ternary. Ver semejanzas y diferencias.
