@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const ClickTracker = () => {
 
@@ -9,6 +9,21 @@ const ClickTracker = () => {
         setCount(count + 1);
         setDate(new Date().toLocaleString());
     }
+
+    //Se ejecuta SOLAMENTE cuando se monta el componente
+    useEffect(()=> {
+        console.log("Se montó el componente Click Tracker");
+        return () => {
+            console.log("Se desmontó el componente");
+        }
+    }, [])
+
+    //Se ejecuta cuando se monta el componente y cuando se actualiza el count
+    useEffect(()=> {
+        console.log("Se montó/actualizó el componente Click Tracker")
+    }, [count])
+
+    console.log("Se ejecuta un render de Click Tracker")
 
     return (
         <div style={{
