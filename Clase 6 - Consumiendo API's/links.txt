@@ -1,0 +1,4 @@
+1era parte
+Ver modelo cliente server.
+Ver peticiones HTTP desde POSTMAN
+Fetch a alguna API y renderizar en nuestra aplicación
