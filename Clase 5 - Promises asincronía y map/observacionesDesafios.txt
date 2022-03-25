@@ -1,0 +1,4 @@
+Carpeta assets => contiene svg, imagenes, contenido estático.
+No hace falta que la carpeta del componente contenga la palabra "Component"
+Revisar siempre la correcta indentación.
+Comentar bloques de código complicados (sobre todo para más adelante, donde habrá lógica más fuerte)
