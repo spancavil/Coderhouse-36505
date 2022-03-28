@@ -4,3 +4,5 @@ Ver peticiones HTTP desde POSTMAN
 Fetch a alguna API y renderizar en nuestra aplicación
 
 https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional => arquitectura REST
+https://fakestoreapi.com/docs => Fakestore API
+https://jsonplaceholder.typicode.com/guide/ => JSON placeholder

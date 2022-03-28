@@ -12,7 +12,7 @@ const ItemListContainer = ({greeting}) => {
         //IIFE
         ( async ()=> {
             try {
-                const response = await fetch('/data.json');
+                const response = await fetch('https://jsonplaceholder.typicode.com/posts');
                 console.log(response);
                 const data = await response.json();
                 console.log(data);
@@ -32,7 +32,7 @@ const ItemListContainer = ({greeting}) => {
             {/* NOTA: Llamar a ItemList para que haga el map */}
             <ul>
                 {products.map(product => {
-                    return <li>{product.title}</li>
+                    return <li>{product.description}</li>
                 })}
             </ul>
         </div>
