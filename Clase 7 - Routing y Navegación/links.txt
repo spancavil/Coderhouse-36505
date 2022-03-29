@@ -1,1 +1,2 @@
 https://reactrouter.com/docs/en/v6/getting-started/overview => Docu de React Router DOM
+https://pokeapi.co/docs/v2#pokemon => PokeApi documentation
