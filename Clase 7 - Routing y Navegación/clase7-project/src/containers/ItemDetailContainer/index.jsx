@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemDetail from '../../components/ItemDetail'
 
 const ItemDetailContainer = () => {
 
     const [personaje, setPersonaje] = useState({})
 
+    const {id} = useParams();
+
     useEffect(()=> {
 
         ( async ()=> {
             try {
-                const response = await fetch('https://rickandmortyapi.com/api/character/3');
+                const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
                 console.log(response);
                 const data = await response.json();
                 console.log(data);
@@ -19,7 +22,7 @@ const ItemDetailContainer = () => {
             }
         })()
 
-    }, [])
+    }, [id])
 
     console.log(personaje);
 

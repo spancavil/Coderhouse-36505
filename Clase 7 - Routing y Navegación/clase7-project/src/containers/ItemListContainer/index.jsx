@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([]);
-    const {id} = useParams () //Siempre trae un string
+    const { id } = useParams() //Siempre trae un string
 
     console.log(id);
 
@@ -12,9 +12,9 @@ const ItemListContainer = ({greeting}) => {
         console.log(`Se agregaron ${count} productos al carrito`);
     } */
 
-    useEffect(()=> {
+    useEffect(() => {
         //IIFE
-        ( async ()=> {
+        (async () => {
             try {
                 const response = await fetch('https://rickandmortyapi.com/api/character');
                 console.log(response);
@@ -42,10 +42,14 @@ const ItemListContainer = ({greeting}) => {
         <div>
             <h2>{greeting}</h2>
             {/* NOTA: Llamar a ItemList para que haga el map */}
-            { products.length !== 0 ?
+            {products.length !== 0 ?
                 <ul>
                     {products.map(product => {
-                        return <li key={product.name}>{product.name}</li>
+                        return <li key={product.name}>
+                            <Link to ={`/item/${product.id}`}>
+                                {product.name}
+                            </Link>
+                        </li>
                     })}
                 </ul>
                 :
