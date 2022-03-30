@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([]);
     const { id } = useParams() //Siempre trae un string
+    const navigate = useNavigate();
 
     console.log(id);
 
@@ -45,10 +46,12 @@ const ItemListContainer = ({ greeting }) => {
             {products.length !== 0 ?
                 <ul>
                     {products.map(product => {
-                        return <li key={product.name}>
-                            <Link to ={`/item/${product.id}`}>
+                        return <li key={product.name}
+                            style = {{
+                                cursor: 'pointer'
+                            }}
+                            onClick={() => navigate(`/item/${product.id}`)}>
                                 {product.name}
-                            </Link>
                         </li>
                     })}
                 </ul>
