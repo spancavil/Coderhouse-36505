@@ -1,0 +1,2 @@
+https://react-typescript-cheatsheet.netlify.app/ => cheatsheet React + tsx
+https://blog.bitsrc.io/react-with-typescript-cheatsheet-9dd891dc5bfe => Un cheatsheet muy bueno también
