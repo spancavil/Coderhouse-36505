@@ -1,0 +1,10 @@
+https://styled-components.com/ => Docu oficial
+https://www.smashingmagazine.com/2020/07/styled-components-react/ => buen resumen
+
+instalar usando npm, instalar también la extensión para autocomplete
+generar un styled component a novo (por fuera del componente, se recomienda)
+pasaje de props
+Manejo de eventos dentro del componente
+Override de styles y extend
+Uso de "as" para hacer el cambio de elemento HTML pero con los mismos estilos
+Pseudoelements, pseudoselectors, and nesting

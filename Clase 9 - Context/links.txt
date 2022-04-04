@@ -1,0 +1,6 @@
+Configurar a mano el shop provider, y dejar el template base.
+Configurar algunas funcionalidades útiles en el Context
+
+https://reactjs.org/docs/context.html => Docu de Context
+https://reactjs.org/blog/2022/03/29/react-v18.html => React 18 new features
+https://betterprogramming.pub/whats-new-in-react-18-f69fb8b0619f => Un resumen
