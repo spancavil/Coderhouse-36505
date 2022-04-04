@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Shop } from '../../context/ShopProvider';
 import ItemCount from '../ItemCount';
 
 const ItemDetail = ({personaje}) => {
 
     const [quantity, setQuantity] = React.useState(0)
+
+    const {addCart} = useContext(Shop);
 
     const handleAdd = (quantity) => {
         console.log(quantity);
@@ -12,6 +15,7 @@ const ItemDetail = ({personaje}) => {
 
     const handleTerminate = () => {
         console.log("Terminó la compra")
+        addCart(personaje, quantity);
     }
 
     return (

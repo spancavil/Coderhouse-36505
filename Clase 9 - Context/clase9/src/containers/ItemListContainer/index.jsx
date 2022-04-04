@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Shop } from '../../context/ShopProvider';
+// import { Shop } from '../../context/ShopProvider';
 
 const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([]);
-    const {estadoA, fnDelContext} = useContext(Shop);
+    // const {estadoA, fnDelContext} = useContext(Shop);
     const { id } = useParams() //Siempre trae un string
     const navigate = useNavigate();
 
@@ -40,8 +40,8 @@ const ItemListContainer = ({ greeting }) => {
     }, [id]) //Colocamos el id como dependencia, para que cada vez que haya un nuevo id, se ejecute nuevamente.
     
     console.log(products);
-    console.log(estadoA);
-    console.log(fnDelContext(5, 3));
+    // console.log(estadoA);
+    // console.log(fnDelContext(5, 3));
 
     return (
         <div>
