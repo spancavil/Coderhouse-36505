@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 // import { Shop } from '../../context/ShopProvider';
+import { db } from '../../Firebase/config';
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -10,7 +12,7 @@ const ItemListContainer = ({ greeting }) => {
     const navigate = useNavigate();
 
     console.log(id);
-    
+
     /* const onAdd = (count) => {
         console.log(`Se agregaron ${count} productos al carrito`);
     } */
@@ -19,11 +21,20 @@ const ItemListContainer = ({ greeting }) => {
         //IIFE
         (async () => {
             try {
-                const response = await fetch('https://rickandmortyapi.com/api/character');
+                /* const response = await fetch('https://rickandmortyapi.com/api/character');
                 console.log(response);
                 const data = await response.json();
                 console.log(data);
-                const personajes = data.results;
+                const personajes = data.results; */
+
+                const querySnapshot = await getDocs(collection(db, "productos"));
+                const personajes = []
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    personajes.push({id: doc.id, ...doc.data()})
+                });
+                console.log(personajes);
+
                 if (!id) {
                     setProducts(personajes);
                 } else {
@@ -36,9 +47,9 @@ const ItemListContainer = ({ greeting }) => {
                 console.log(error);
             }
         })()
-        
+
     }, [id]) //Colocamos el id como dependencia, para que cada vez que haya un nuevo id, se ejecute nuevamente.
-    
+
     console.log(products);
     // console.log(estadoA);
     // console.log(fnDelContext(5, 3));
@@ -51,11 +62,11 @@ const ItemListContainer = ({ greeting }) => {
                 <ul>
                     {products.map(product => {
                         return <li key={product.name}
-                            style = {{
+                            style={{
                                 cursor: 'pointer'
                             }}
                             onClick={() => navigate(`/item/${product.id}`)}>
-                                {product.name}
+                            {product.name}
                         </li>
                     })}
                 </ul>
