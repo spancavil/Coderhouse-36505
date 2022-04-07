@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+// import { Boton } from '../../Styles/global';
 // import { useParams, useNavigate } from 'react-router-dom';
 const Item = styled.li`
     padding: 3em;
@@ -10,9 +12,24 @@ const Item = styled.li`
     cursor: pointer;
 `
 
-const Boton = styled.p`
+/* const Boton = styled.button`
     padding: 2em;
-    background:${props => props.bg === "green" ? "darkolivegreen" : "black"};
+    background: "darkolivegreen";
+` */
+
+const Boton2 = styled.button`
+    padding: 1.5em;
+    background: blue;
+    color: black;
+    @media screen and (max-width: 766px) {
+        padding: 1em;
+        background: violet;
+        color: black;
+    }
+`
+
+const BotonHeredado = styled(Boton2)`
+    border: 2px solid black;
 `
 
 const ItemListContainer = ({ greeting }) => {
@@ -52,6 +69,9 @@ const ItemListContainer = ({ greeting }) => {
 
     }, []) //Colocamos el id como dependencia, para que cada vez que haya un nuevo id, se ejecute nuevamente.
 
+    function handleClick(){
+        console.log("Se clickeo dentro del botón heredado")
+    }
 
     return (
         <div>
@@ -60,12 +80,15 @@ const ItemListContainer = ({ greeting }) => {
             {products.length !== 0 ?
                 <ul>
                     {products.map(product => {
-                        return <Boton
-                            bg = "verde"
-                            // onClick={() => navigate(`/Button/${product.id}`)}
+                        return <BotonHeredado
+                            // boxshadow = {`box-shadow: 10px 10px 16px 2px rgba(0,0,0,0.75);
+                            // -webkit-box-shadow: 10px 10px 16px 2px rgba(0,0,0,0.75);
+                            // -moz-box-shadow: 10px 10px 16px 2px rgba(0,0,0,0.75);`}
+                            // textcolor = {"green"}
+                            onClick = {handleClick}
                             >
                             {product.name}
-                        </Boton>
+                        </BotonHeredado>
 
                     })}
                 </ul>
