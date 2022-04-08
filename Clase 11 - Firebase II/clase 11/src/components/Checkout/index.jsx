@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
+import {db} from '../../Firebase/config';
+import { addDoc, collection } from 'firebase/firestore';
 
-const Checkout = ({ handleClose }) => {
+const Checkout = ({ handleClose, cart, total }) => {
 
     const [nombre, setNombre] = useState("");
     const [direccion, setDireccion] = useState("")
@@ -10,6 +12,23 @@ const Checkout = ({ handleClose }) => {
         e.preventDefault();
         console.log("Se hizo el submit");
         console.log(nombre, direccion);
+        if (nombre === "" || direccion === ""){
+            return
+        }
+        const order = {
+            buyer: {
+                nombre: nombre,
+                direccion: direccion
+            },
+            items: {
+                cart: cart
+            },
+            total: total
+        }
+        console.log(order);
+        const orderCollection = collection(db, 'orders');
+        addDoc(orderCollection, order).then(({id})=> alert(`Order generada con id ${id}`))
+        
     }
 
     return (
