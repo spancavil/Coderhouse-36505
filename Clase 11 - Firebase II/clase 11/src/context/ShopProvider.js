@@ -26,17 +26,22 @@ const ShopProvider = ({ children }) => {
         } else {
             //Agregamos un nuevo objeto al carrito
             setCart([...cart, { ...product, quantity: quantityToAdd }]);
-        }
 
+        }
     }
     //Función auxiliar que me determina si el producto está o no en el cart
     const isInCart = (producto) => {
         return cart.find(elemento => elemento.id === producto.id);
     }
 
+    const sumaTotal = () => {
+        const suma = cart.reduce((acc, item) => acc += (item.price * item.quantity), 0)
+        return suma;
+    }
+
     return (
         <Shop.Provider value={{
-            addCart
+            addCart, cart, sumaTotal
         }}>
             {children}
         </Shop.Provider>

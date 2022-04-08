@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { Shop } from '../../context/ShopProvider';
 import ItemCount from '../ItemCount';
+import {useNavigate} from 'react-router-dom';
 
 const ItemDetail = ({personaje}) => {
 
     const [quantity, setQuantity] = React.useState(0)
 
     const {addCart} = useContext(Shop);
+
+    const navigate = useNavigate();
 
     const handleAdd = (quantity) => {
         console.log(quantity);
@@ -16,6 +19,11 @@ const ItemDetail = ({personaje}) => {
     const handleTerminate = () => {
         console.log("Terminó la compra")
         addCart(personaje, quantity);
+        navigate('/cart');
+    }
+
+    const handleBrowsing = () => {
+        navigate('/')
     }
 
     return (
@@ -39,7 +47,10 @@ const ItemDetail = ({personaje}) => {
                 {quantity === 0 ? 
                     <ItemCount stock={10} onAdd={handleAdd}/> 
                     :
-                    <button className="btn btn-primary" onClick={handleTerminate}>Finalizar compra</button>     
+                    <>
+                        <button className="btn btn-primary m-3" onClick={handleTerminate}>Ir al carrito</button>
+                        <button className='btn btn-primary' onClick={handleBrowsing}> Seguir navegando</button>     
+                    </>
                 }
             </div>
         </div>
