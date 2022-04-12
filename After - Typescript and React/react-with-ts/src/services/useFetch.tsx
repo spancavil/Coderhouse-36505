@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 //Type of API response
-export type ApiResponse = {
+type ApiResponse = {
     status: Number | null;
     statusText: String | null;
     data: any;
