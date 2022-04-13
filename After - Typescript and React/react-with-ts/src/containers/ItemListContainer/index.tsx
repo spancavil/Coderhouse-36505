@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "../../services/useFetch";
-import {Character} from '../../../types.d';
+// import useFetch from "../../services/useFetch";
+import {Personaje} from '../../../types.d';
 import Form from "../../components/Form";
 
 interface PropsContainer {
     message: string;
-    count: number;
+    count: number | string;
 }
 
 interface State{
-  data: Array<Character>
+  data: Array<Personaje>
 }
 
 const ItemListContainer = ({message, count}: PropsContainer) => {
@@ -17,10 +17,11 @@ const ItemListContainer = ({message, count}: PropsContainer) => {
   const [characters, setCharacters] = useState<State["data"]>([]);
 
   useEffect(()=> {
-    const getCharacters = async (): Promise<Array<Character>> => {
+    const getCharacters = async (): Promise<Array<Personaje>> => {
       try {
         const response = await fetch("https://rickandmortyapi.com/api/character");
-        return await response.json();
+        const data: any = await response.json()
+        return data.results;
       } catch (error: any) {
         return(error);
       }
@@ -30,7 +31,7 @@ const ItemListContainer = ({message, count}: PropsContainer) => {
 
   }, [])
 
-  const handleSubmit = (character: Character) => {
+  const handleSubmit = (character: Personaje) => {
     
     setCharacters([...characters, character])
   }

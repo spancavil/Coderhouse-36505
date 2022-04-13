@@ -1,12 +1,19 @@
 import { useState } from 'react';
+import ItemCount from './components/ItemCount';
 import Modal from './components/Modal';
 import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
   const [modal, setModal] = useState<boolean>(true)
+
+  const onAdd = (quantity: number) => {
+    console.log("Productos agregados al cart: ", quantity)
+  }
+
   return (
     <div className="App">
 
+      <ItemCount stock = {13} onAdd = {onAdd} initial={3}/>
       {modal && <Modal onClose={setModal} style={{
         width: '200px',
         height: '400px',
@@ -18,7 +25,7 @@ function App() {
       </Modal>
       }
 
-      <ItemListContainer message='Hola' count={20} />
+      { <ItemListContainer message='Hola' count={10} /> }
     </div>
   );
 }

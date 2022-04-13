@@ -9,6 +9,7 @@ type ApiResponse = {
     loading: Boolean;
 };
 
+//Custom hook para hacer fetch a una URL
 const useFetch = (url: string): ApiResponse => {
 
     const [status, setStatus] = useState<number | null>(null);

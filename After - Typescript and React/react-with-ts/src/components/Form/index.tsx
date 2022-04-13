@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Character } from '../../../types';
+import { Personaje } from '../../../types';
 
 interface Props {
-    handleSubmit: (character: Character) => void
+    handleSubmit: (character: Personaje) => void
 }
 
 const Form = ({handleSubmit}: Props) => {
 
-    const [inputValues, setInputValues] = useState<Character>({
+    const [inputValues, setInputValues] = useState<Personaje>({
         id: 0,
         name: "",
         status: "",
