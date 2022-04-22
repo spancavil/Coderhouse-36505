@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   text: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 12,
   }
 });

@@ -1,0 +1,4 @@
+https://reactnative.dev/docs/components-and-apis => Core components
+https://stackoverflow.com/questions/30853178/react-native-global-styles => Añadiendo estilos globales.
+https://html-css-js.com/css/generator/box-shadow/ => CSS generators
+https://coolors.co/palettes/trending => Trending pallettes
