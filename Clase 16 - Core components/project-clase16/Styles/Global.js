@@ -9,7 +9,8 @@ export const colors = {
 
 export default StyleSheet.create({
     container: {
-        padding: 10,
+        paddingVertical: 25,
+        paddingHorizontal: 10,
         backgroundColor: colors.light
     },
     
