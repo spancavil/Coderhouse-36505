@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, TextInput, View, StyleSheet} from 'react-native';
+import { Button, TextInput, View, StyleSheet, Image} from 'react-native';
 import Item from '../Components/Item';
 import globalStyle from '../Styles/Global';
 import { colors } from '../Styles/Global';
@@ -18,6 +18,11 @@ const Layout = () => {
 
     return (
         <View style={globalStyle.container}>
+            <Image
+                resizeMode= "cover" 
+                style = {styles.image}
+                source = {require('../assets/todo.webp')}
+            />
             <View style ={styles.topContainer}>
                 <TextInput
                 style = {styles.input}
@@ -29,9 +34,11 @@ const Layout = () => {
                 title='Add todo'
                 />
             </View>
-            <View style={styles.listContainer}>
-                {todos.map((todo, index) => <Item key={index} todo={todo} />)}
-            </View>
+            {todos.length !== 0 && (
+                <View style={styles.listContainer}>
+                    {todos.map((todo, index) => <Item key={index} todo={todo} />)}
+                </View>
+            )}
         </View>
     )
 }
@@ -53,5 +60,9 @@ const styles = StyleSheet.create({
     listContainer: {
         backgroundColor: colors.brown,
         padding: 10,
+    },
+    image: {
+        width: '100%',
+        height: 200,
     }
 })
