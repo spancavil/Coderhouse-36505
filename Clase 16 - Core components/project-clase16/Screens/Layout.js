@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Button, TextInput, View, StyleSheet, Image} from 'react-native';
+import { Button, TextInput, View, StyleSheet, Image, FlatList} from 'react-native';
 import Item from '../Components/Item';
 import globalStyle from '../Styles/Global';
 import { colors } from '../Styles/Global';
+
+const fnRenderItem = ({item}) => {
+    return(<Item todo={item}></Item>)
+}
 
 const Layout = () => {
 
@@ -35,9 +39,11 @@ const Layout = () => {
                 />
             </View>
             {todos.length !== 0 && (
-                <View style={styles.listContainer}>
-                    {todos.map((todo, index) => <Item key={index} todo={todo} />)}
-                </View>
+                <FlatList style={styles.listContainer}
+                data={todos}
+                renderItem={fnRenderItem}
+                keyExtractor={(todo,index) => index.toString()}
+                />
             )}
         </View>
     )

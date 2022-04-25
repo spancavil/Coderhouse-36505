@@ -11,7 +11,7 @@ export default StyleSheet.create({
     container: {
         paddingVertical: 25,
         paddingHorizontal: 10,
-        backgroundColor: colors.light
+        backgroundColor: colors.light,
     },
     
 })
