@@ -1,0 +1,32 @@
+https://docs.expo.dev/guides/testing-with-jest/ => Testeando con Jest en expo
+https://jestjs.io/docs/tutorial-react-native => Guía de Jest
+https://itsmycode.com/unable-to-resolve-dependency-tree-error-when-installing-npm-packages/
+https://humanwhocodes.com/snippets/2019/05/jest-globals-intellisense-visual-studio-code/ => Habilita el autocompletado para jest
+https://www.geeksforgeeks.org/testing-with-jest/ => Uso de los matchers básicos de jest
+https://www.youtube.com/watch?v=ZmVBCpefQe8 => Excelente charla introductoria al testing.
+
+1) Configurar Jest, sus respectivos scripts en package.json e instalar las dep que nos recomienda expo.
+(verificar que react-test-renderer coincida con la versión de react y también los types)
+Debería quedarnos algo de este estilo en el package.json:
+  "jest": {
+    "verbose": true,
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "setupFiles": [
+      "<rootDir>/src/jestSetup.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
+    ]
+  },
+2) Generar una carpeta __testing__ con las subcarpetas correspondientes.
+3) Agregar un jestSetup.js para incorporar las respectivas implementaciones.
+4) Correr los scripts que correspondan.
+5) Ver el coverage
