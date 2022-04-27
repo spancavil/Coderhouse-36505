@@ -9,22 +9,25 @@ const MainNavigator = () => {
     const Stack = createNativeStackNavigator();
 
     return (
-    <NavigationContainer>
-        <Stack.Navigator 
-        initialRouteName="Categories"
-        >
-            <Stack.Screen 
-                name = "Categories" 
-                component={Categories} 
-                options={{title: "Categories"}}
-            />
-            <Stack.Screen 
-                name = "Products" 
-                component={Products} 
-                options={ ({route}) => ({title: route.params.category})}/>
-            <Stack.Screen name = "Detail" component = {Detail} options={{title: "Detail"}}/>
-        </Stack.Navigator>
-    </NavigationContainer>
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="Categories"
+            >
+                <Stack.Screen
+                    name="Categories"
+                    component={Categories}
+                    options={{ title: "Categories" }}
+                />
+                <Stack.Screen
+                    name="Products"
+                    component={Products}
+                    options={({ route }) => ({ title: route.params.category })} />
+                <Stack.Screen
+                    name="Detail"
+                    component={Detail}
+                    options={({ route }) => ({ title: route.params.title })} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 
