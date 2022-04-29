@@ -11,7 +11,6 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
 
     return (
-        <NavigationContainer>
             <Tab.Navigator
             screenOptions={{
                 headerShown: false
@@ -21,7 +20,6 @@ const TabNavigator = () => {
                 <Tab.Screen name="Cart" component={CartStack} />
                 <Tab.Screen name="Orders" component={OrderStack}/>
             </Tab.Navigator>
-        </NavigationContainer>
     );
 }
 

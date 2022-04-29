@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { colors } from '../../Styles/colors'
-import { auth } from '../../Firebase/config';
+import { colors } from '../Styles/colors';
+import { auth } from '../Firebase/config';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Auth = () => {

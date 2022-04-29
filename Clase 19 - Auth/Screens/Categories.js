@@ -1,5 +1,7 @@
+import { signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { Text, Button, View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { auth } from '../Firebase/config';
 import { fetching } from '../Services/fetch';
 
 const Categories = ({ navigation }) => {
@@ -22,8 +24,21 @@ const Categories = ({ navigation }) => {
     })
   }
 
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
   return (
     <View>
+      <TouchableOpacity onPress={handleSignOut}>
+        <Text>
+          Sign out
+        </Text>
+      </TouchableOpacity>
       <Text>Categories</Text>
       {categories.length !== 0 ? 
         <FlatList
