@@ -2,12 +2,14 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import React, { useState } from 'react'
 import { colors } from '../../Styles/colors'
 import { auth } from '../../Firebase/config';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Auth = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [loginView, setLoginView] = useState(false);
 
     const handleSignup = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -22,13 +24,36 @@ const Auth = () => {
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
                 // ..
-            });
+            })
+            .finally(()=> {
+                setEmail("");
+                setPassword("");
+            })
+    }
+
+    const handleLogin = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            })
+            .finally(()=> {
+                setEmail("");
+                setPassword("");
+            })
     }
 
     return (
         <View style={styles.container}>
             <View>
-                <Text>Registro de usuario</Text>
+                <Text>{loginView ? 'Login' : 'Registro de usuario'}</Text>
                 <TextInput
                     style={styles.input}
                     value={email}
@@ -42,9 +67,24 @@ const Auth = () => {
                     onChangeText={setPassword}
                     placeholder="Ingrese password"
                 ></TextInput>
-                <TouchableOpacity onPress={handleSignup}>
-                    <Text>Sign up</Text>
-                </TouchableOpacity>
+                {loginView ?
+                    <TouchableOpacity onPress={handleLogin}>
+                        <Text>Login</Text>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={handleSignup}>
+                        <Text>Sign up</Text>
+                    </TouchableOpacity>
+                }
+                <View>
+                    <Text>{loginView ? 'No tienes usuario?' : 'Ya tienes usuario?'}</Text>
+                    <TouchableOpacity
+                        onPress={() => setLoginView(!loginView)}>
+                        <Text>
+                            {loginView ? 'sign up' : 'sign in'}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     )
