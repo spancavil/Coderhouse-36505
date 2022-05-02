@@ -34,11 +34,11 @@ const ShopProvider = ({children}) => {
 
     }, [])
 
-    console.log(products);
-    console.log(categories)
+    // console.log(products);
+    // console.log(categories)
 
     return(
-        <Shop.Provider value={{products}}>
+        <Shop.Provider value={{products, categories}}>
             {children}
         </Shop.Provider>
     )

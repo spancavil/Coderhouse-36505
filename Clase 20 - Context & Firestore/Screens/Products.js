@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {Text, View, ActivityIndicator, FlatList, TouchableOpacity} from 'react-native';
+import { Shop } from '../Context/ShopProvider';
 import { fetching } from '../Services/fetch';
 
 const Products = ({navigation, route}) => {
   const {category} = route.params;
 
-  const [products, setProducts] = useState([])
+  const {products} = useContext(Shop);
+
+  const [productFilter, setProductFilter] = useState([])
 
   useEffect(()=> {
 
     (async ()=>{
-      const data = await fetching('https://fakestoreapi.com/products/category/' + category)
-      setProducts(data);
+      const productFilter = products.filter(product => product.species === category)
+      setProductFilter(productFilter);
     })()
 
   }, [category])
@@ -19,7 +22,7 @@ const Products = ({navigation, route}) => {
   const handleDetail = (item) => {
     navigation.navigate('Detail', {
       id: item.id,
-      title: item.title,
+      title: item.name,
       item: item,
     })
   }
@@ -29,13 +32,13 @@ const Products = ({navigation, route}) => {
       <Text>Products</Text>
       {products.length !== 0 ? 
         <FlatList
-          data={products}
+          data={productFilter}
           renderItem={( {item} ) => {
             return <TouchableOpacity
               onPress={() => handleDetail(item)}
             >
               <Text>
-                {item.title}
+                {item.name}
               </Text>
             </TouchableOpacity>
           }

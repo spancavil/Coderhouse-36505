@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
 const Detail = ({navigation, route}) => {
 
@@ -6,7 +6,16 @@ const Detail = ({navigation, route}) => {
 
   return (
       <View>
-          <Text>{item.description}</Text>
+          <Text>{item.name}</Text>
+          <Image 
+            source={{uri: item.image}}
+            style = {{
+              height: 200,
+              width: '95%',
+            }}
+            resizeMode = "cover"
+          />
+          <Text>{item.price}</Text>
       </View>
   )
 }

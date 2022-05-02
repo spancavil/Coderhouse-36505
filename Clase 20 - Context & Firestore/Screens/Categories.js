@@ -1,21 +1,13 @@
 import { signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Text, Button, View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { Shop } from '../Context/ShopProvider';
 import { auth } from '../Firebase/config';
 import { fetching } from '../Services/fetch';
 
 const Categories = ({ navigation }) => {
 
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-
-    (async () => {
-      const data = await fetching('https://fakestoreapi.com/products/categories');
-      setCategories(data);
-    })()
-
-  }, [])
+  const {categories} = useContext(Shop);
 
   const handleCategory = (categoryID) => {
     //console.log(categoryID);
@@ -42,15 +34,14 @@ const Categories = ({ navigation }) => {
       <Text>Categories</Text>
       {categories.length !== 0 ? 
         <FlatList
-          numColumns={2}
           
           data={categories}
           renderItem={( {item} ) => {
             return <TouchableOpacity
-              onPress={() => handleCategory(item)}
+              onPress={() => handleCategory(item.category)}
             >
               <Text>
-                {item}
+                {item.category}
               </Text>
             </TouchableOpacity>
           }
