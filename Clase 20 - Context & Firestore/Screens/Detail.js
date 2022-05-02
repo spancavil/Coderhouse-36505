@@ -1,8 +1,16 @@
-import {View, Text, Image} from 'react-native';
+import { useContext } from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import { Shop } from '../Context/ShopProvider';
 
 const Detail = ({navigation, route}) => {
 
   const {item} = route.params;
+
+  const {addCart} = useContext(Shop);
+
+  const handleAdd = () => {
+    addCart(item, 1)
+  }
 
   return (
       <View>
@@ -16,6 +24,9 @@ const Detail = ({navigation, route}) => {
             resizeMode = "cover"
           />
           <Text>{item.price}</Text>
+          <TouchableOpacity onPress={handleAdd}>
+            <Text>Add to cart</Text>
+          </TouchableOpacity>
       </View>
   )
 }

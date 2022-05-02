@@ -46,7 +46,7 @@ const Categories = ({ navigation }) => {
             </TouchableOpacity>
           }
           }
-          keyExtractor={item => item.toString()}
+          keyExtractor={item => item.id.toString()}
         />
         :
         <ActivityIndicator size={"large"} color={"blue"}/>
