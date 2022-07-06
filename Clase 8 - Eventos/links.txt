@@ -1,7 +1,9 @@
 Ver ejemplo registrando la tecla ESC (para salir de una app)
 
-Ver ejemplo de stopPropagation (divs dentro de otros divs)
+https://reactjs.org/docs/events.html => Synthetic events
 
-https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault => Muchísimos ejemplos de preventDefault, entre ellos el input.
+https://www.w3schools.com/jsref/event_stoppropagation.asp => ejemplo de stopPropagation (divs dentro de otros divs)
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault => 2 ejemplos de preventDefault, entre ellos el input y el onClick del check.
 
 https://medium.com/@simonhoyos/eventos-en-react-b53179ec9683 => Eventos sintéticos en React

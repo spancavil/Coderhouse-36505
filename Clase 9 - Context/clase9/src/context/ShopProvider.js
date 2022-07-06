@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const Shop = createContext();
 
@@ -12,6 +12,7 @@ const ShopProvider = ({ children }) => {
     } */
 
     const [cart, setCart] = useState([]);
+    const [suma, setSuma] = useState(0)
 
     const addCart = (product, quantityToAdd) => {
 
@@ -19,9 +20,9 @@ const ShopProvider = ({ children }) => {
         console.log(producto);
         if (producto) {
             producto.quantity += quantityToAdd;
-            const cartFiltrado = cart.filter(elemento => elemento.id !== producto.id);
-            cartFiltrado.push(producto);
-            setCart(cartFiltrado);
+            // const cartFiltrado = cart.filter(elemento => elemento.id !== producto.id);
+            // cartFiltrado.push(producto);
+            setCart([...cart]);
             //Deberíamos agregar la cantidad al producto existente
         } else {
             //Agregamos un nuevo objeto al carrito
@@ -34,9 +35,16 @@ const ShopProvider = ({ children }) => {
         return cart.find(elemento => elemento.id === producto.id);
     }
 
+    useEffect(() => {
+        const suma = cart.reduce((acumulador, item) => acumulador += Math.floor(Math.random()*100) * item.quantity, 0)
+        setSuma(suma)
+    }, [cart])
+
     return (
         <Shop.Provider value={{
-            addCart
+            addCart,
+            cart,
+            suma
         }}>
             {children}
         </Shop.Provider>
